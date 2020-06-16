@@ -1,0 +1,6 @@
+.Container{
+  height:100vh;
+  min-height:550px;
+  padding:50px;
+  background-color:white;
+}

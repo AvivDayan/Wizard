@@ -1,0 +1,137 @@
+.wizard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: inherit;
+}
+
+.wizard-top {
+  height: 120px;
+  display: flex;
+  background-color: inherit;
+}
+
+.wizard-anchor {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: inherit;
+}
+
+  .wizard-anchor.wizard-anchor-visited {
+      color: #666666;
+  }
+
+  .wizard-anchor.wizard-anchor-selected {
+      color: #97C93C;
+  }
+
+  .wizard-anchor.wizard-anchor-unvisited {
+      color: #C2C2C2;
+  }
+
+  .wizard-anchor.wizard-anchor-visited .wizard-anchor-bottom-circle-inner {
+      background-color: #666666;
+  }
+
+  .wizard-anchor.wizard-anchor-selected .wizard-anchor-bottom-circle-inner {
+      background-color: #97C93C;
+  }
+
+  .wizard-anchor.wizard-anchor-unvisited .wizard-anchor-bottom-circle-inner {
+      background-color: #C2C2C2;
+  }
+
+.wizard-anchor-top {
+  height: 60%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wizard-anchor-bottom {
+  height: 40%;
+  position: relative;
+  background-color: inherit;
+}
+
+.wizard-anchor-bottom-line {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #C2C2C2;
+}
+
+.wizard-anchor-bottom-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 35px;
+  height: 35px;
+  background-color: inherit;
+  transform: translateX(-50%) translateY(-50%);
+  border-radius: 50px;
+  border: 1px solid #C2C2C2;
+}
+
+.wizard-anchor-bottom-circle-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  transform: translateX(-50%) translateY(-50%);
+  border-radius: 50px;
+}
+
+.wizard-middle {
+  position: relative;
+  height: calc(100% - 220px);
+}
+
+.wizard-step {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: all 0.4s;
+}
+
+  .wizard-step.wizard-step-hidden {
+      opacity: 0;
+      pointer-events: none;
+  }
+
+.wizard-bottom {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wizard-button {
+  width: 140px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  cursor: pointer;
+  font-size: 14px;
+  background-color: #97c93c;
+  color: white;
+  border-radius: 5%;
+}
+
+  .wizard-button:hover {
+      background-color: #7ca833;
+  }
+
+  .wizard-button.wizard-button-disabled {
+      color: grey;
+      pointer-events: none;
+      cursor: none;
+      opacity: 0.5;
+  }

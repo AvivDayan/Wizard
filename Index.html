@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+    integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/css/Index.css" />
+  <link rel="stylesheet" href="/css/Wizard.css" />
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+    integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FitText.js/1.2.0/jquery.fittext.min.js"></script>
+  <script src="/js/Wizard.js"></script>
+
+  <title>Bootstrap Sandbox</title>
+</head>
+
+<body>
+  <div class="Container">
+    <div class="wizard">
+      <div class="wizard-top">
+        <div id="wizard-anchor-1">First Step</div>
+        <div id="wizard-anchor-2">Second Step</div>
+        <div id="wizard-anchor-3">Third Step</div>
+        <div id="wizard-anchor-4">Fourth Step</div>
+        <div id="wizard-anchor-5">Fifth Step</div>
+        <div id="wizard-anchor-6">Sixth Step</div>
+      </div>
+      <div class="wizard-middle">
+        <div id="wizard-step-1">1</div>
+        <div id="wizard-step-2">2</div>
+        <div id="wizard-step-3">3</div>
+        <div id="wizard-step-4">4</div>
+        <div id="wizard-step-5">5</div>
+        <div id="wizard-step-6">6</div>
+      </div>
+      <div class="wizard-bottom">
+        <div id="wizard-button-previous" onclick="wizardGoPrevious()">Previous</div>
+        <div id="wizard-button-next" onclick="wizardGoNext()">Next</div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

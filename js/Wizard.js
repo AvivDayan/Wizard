@@ -6,12 +6,15 @@ let wizardNextBtn
 let wizardAnchors = []
 let wizardSteps = []
 
+//Wizard intialization
 $(document).ready(() => {
   wizardPopulateMembers()
   wizardCreateAnchors()
   wizardCreateSteps()
   wizardCreateButtons()
 })
+
+//The following methods are for wizard intiailization and should not be used in js files other then this one.
 
 const wizardPopulateMembers = () => {
   //This method populate our members and sets their intial values
@@ -29,7 +32,6 @@ const wizardPopulateMembers = () => {
   }
 }
 
-//Html-altering Functions
 const wizardCreateAnchors = () => {
   //This method adds the wizard-anchor class to each anchor div + creates its children and insert them into the anchor div
   wizardAnchors.forEach((anchor, index) => {
@@ -77,13 +79,15 @@ const wizardCreateButtons = () => {
   wizardNextBtn.classList.add("wizard-button")
 }
 
-//Navigation functions
-const wizardGoNext = () => {
+//Navigation functions - The following Methods are for the developer use
+//and should be used in other js files
+
+const wizardGoNextPage = () => {
   //This method advances one step in the wizard
   wizardChangeStep(wizardCurrentStep + 1)
 }
 
-const wizardGoPrevious = () => {
+const wizardGoPreviousPage = () => {
   //This method goes back one step in the wizard
   wizardChangeStep(wizardCurrentStep - 1)
 }
@@ -134,6 +138,14 @@ const wizardChangeStep = (NextStep) => {
   wizardCurrentStep = NextStep
 }
 
+const wizardGetPrevBtnEnable = () => {
+  return wizardGetBtnEnable(wizardPrevBtn)
+}
+
+const wizardGetNextBtnEnable = () => {
+  return wizardGetBtnEnable(wizardNextBtn)
+}
+
 const wizardEnableNextBtn = (isEnable) => {
   wizardEnableButton(wizardNextBtn, isEnable)
 }
@@ -147,4 +159,12 @@ const wizardEnableButton = (btn, isEnable) => {
     btn.classList.remove("wizard-button-disabled")
   else
     btn.classList.add("wizard-button-disabled")
+}
+
+const wizardGetBtnEnable = (btn) => {
+  return !btn.classList.contains("wizard-button-disabled")
+}
+
+const wizardGetCurrentIndex = () => {
+  return wizardCurrentStep
 }

@@ -89,19 +89,22 @@ const wizardGoPrevious = () => {
 }
 
 const wizardChangeStep = (NextStep) => {
-
   //Enable or disable next and prev buttons according to next step
+
+  if (NextStep < 1 && NextStep > wizardStepsCount)
+    return console.log("wizardChangeStep failed because NextStep is out of bounds")
+
   if (NextStep == 1) {
-    wizardPrevBtn.classList.add("wizard-button-disabled")
+    wizardEnablePrevBtn(false)
   }
 
   if (NextStep < wizardStepsCount && NextStep > 1) {
-    wizardPrevBtn.classList.remove("wizard-button-disabled")
-    wizardNextBtn.classList.remove("wizard-button-disabled")
+    wizardEnablePrevBtn(true)
+    wizardEnableNextBtn(true)
   }
 
   if (NextStep == wizardStepsCount) {
-    wizardNextBtn.classList.add("wizard-button-disabled")
+    wizardEnableNextBtn(false)
   }
 
   //Change anchors classes according to NextStep
@@ -129,4 +132,19 @@ const wizardChangeStep = (NextStep) => {
 
   //Change current step
   wizardCurrentStep = NextStep
+}
+
+const wizardEnableNextBtn = (isEnable) => {
+  wizardEnableButton(wizardNextBtn, isEnable)
+}
+
+const wizardEnablePrevBtn = (isEnable) => {
+  wizardEnableButton(wizardPrevBtn, isEnable)
+}
+
+const wizardEnableButton = (btn, isEnable) => {
+  if (isEnable)
+    btn.classList.remove("wizard-button-disabled")
+  else
+    btn.classList.add("wizard-button-disabled")
 }

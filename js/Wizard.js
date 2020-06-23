@@ -92,51 +92,39 @@ const wizardGoPreviousPage = () => {
   wizardChangeStep(wizardCurrentStep - 1)
 }
 
-const wizardChangeStep = (NextStep) => {
-  //Enable or disable next and prev buttons according to next step
+const wizardChangeStep = (nextStep) => {
+  //We dont want the wizard to go beyond the last step or before the first step.
+  wizardEnablePrevBtn(nextStep > 1)
+  wizardEnableNextBtn(nextStep < wizardStepsCount)
 
-  if (NextStep < 1 && NextStep > wizardStepsCount)
-    return console.log("wizardChangeStep failed because NextStep is out of bounds")
 
-  if (NextStep == 1) {
-    wizardEnablePrevBtn(false)
-  }
-
-  if (NextStep < wizardStepsCount && NextStep > 1) {
-    wizardEnablePrevBtn(true)
-    wizardEnableNextBtn(true)
-  }
-
-  if (NextStep == wizardStepsCount) {
-    wizardEnableNextBtn(false)
-  }
-
-  //Change anchors classes according to NextStep
+  //Change anchors classes according to nextStep
   wizardAnchors.forEach((anchor, index) => {
     index++;
     anchor.classList.remove("wizard-anchor-visited")
     anchor.classList.remove("wizard-anchor-selected")
     anchor.classList.remove("wizard-anchor-unvisited")
 
-    if (index < NextStep) {
+    if (index < nextStep) {
       anchor.classList.add("wizard-anchor-visited")
     }
-    else if (index == NextStep) {
+    else if (index == nextStep) {
       anchor.classList.add("wizard-anchor-selected")
     }
-    else { //index > NextStep
+    else { //index > nextStep
       anchor.classList.add("wizard-anchor-unvisited")
     }
   })
 
   //Im subtracting one from the current steps because wizardCurrentStep starts from 1 and not 0
-  //Change step according to NextStep
+  //Change step according to nextStep
   wizardSteps[wizardCurrentStep - 1].classList.add("wizard-step-hidden")
-  wizardSteps[NextStep - 1].classList.remove("wizard-step-hidden")
+  wizardSteps[nextStep - 1].classList.remove("wizard-step-hidden")
 
   //Change current step
-  wizardCurrentStep = NextStep
+  wizardCurrentStep = nextStep
 }
+
 
 const wizardGetPrevBtnEnable = () => {
   return wizardGetBtnEnable(wizardPrevBtn)

@@ -70,6 +70,15 @@ const wizardCreateSteps = () => {
     if (index > 0)
       step.classList.add("wizard-step-hidden")
   })
+
+  //Unfortuntly, i need to add the transition attrribute in a delay and not straight to the wizard-step class in the css.
+  //the reason for that is becuase its created a bug that showed the opacity animation on page load.
+  //This it the best solution i found.
+  setTimeout(() => {
+    wizardSteps.forEach((step) => {
+      step.classList.add("wizard-step-transition")
+    })
+  }, 1000)
 }
 
 const wizardCreateButtons = () => {
@@ -77,6 +86,7 @@ const wizardCreateButtons = () => {
   wizardPrevBtn.classList.add("wizard-button")
   wizardPrevBtn.classList.add("wizard-button-disabled")
   wizardNextBtn.classList.add("wizard-button")
+  wizardNextBtn.classList.add("wizard-button-disabled")
 }
 
 //Navigation functions - The following Methods are for the developer use
@@ -93,10 +103,8 @@ const wizardGoPreviousPage = () => {
 }
 
 const wizardChangeStep = (nextStep) => {
-  //We dont want the wizard to go beyond the last step or before the first step.
-  wizardEnablePrevBtn(nextStep > 1)
-  wizardEnableNextBtn(nextStep < wizardStepsCount)
-
+  if (nextStep < 1 || nextStep > wizardStepsCount)
+    return console.log("Invalid wizard step change!!! please remain in the boundries of the wizard u shity developer")
 
   //Change anchors classes according to nextStep
   wizardAnchors.forEach((anchor, index) => {
@@ -125,6 +133,10 @@ const wizardChangeStep = (nextStep) => {
   wizardCurrentStep = nextStep
 }
 
+const wizardValidateNextButton = (nextStep) => {
+  return nextStep < wizardStepsCount
+
+}
 
 const wizardGetPrevBtnEnable = () => {
   return wizardGetBtnEnable(wizardPrevBtn)
@@ -155,4 +167,8 @@ const wizardGetBtnEnable = (btn) => {
 
 const wizardGetCurrentIndex = () => {
   return wizardCurrentStep
+}
+
+const wizardGetStepsCount = () => {
+  return wizardStepsCount
 }
